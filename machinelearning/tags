@@ -1,0 +1,128 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28b/
+Add	nn.py	/^class Add(FunctionNode):$/;"	c
+AddBias	nn.py	/^class AddBias(FunctionNode):$/;"	c
+Constant	nn.py	/^class Constant(DataNode):$/;"	c
+DataNode	nn.py	/^class DataNode(Node):$/;"	c
+Dataset	backend.py	/^class Dataset(object):$/;"	c
+DigitClassificationDataset	backend.py	/^class DigitClassificationDataset(Dataset):$/;"	c
+DigitClassificationModel	models.py	/^class DigitClassificationModel(object):$/;"	c
+DotProduct	nn.py	/^class DotProduct(FunctionNode):$/;"	c
+FunctionNode	nn.py	/^class FunctionNode(Node):$/;"	c
+LanguageIDDataset	backend.py	/^class LanguageIDDataset(Dataset):$/;"	c
+LanguageIDModel	models.py	/^class LanguageIDModel(object):$/;"	c
+Linear	nn.py	/^class Linear(FunctionNode):$/;"	c
+Node	nn.py	/^class Node(object):$/;"	c
+PREREQS	autograder.py	/^PREREQS = {}$/;"	v
+Parameter	nn.py	/^class Parameter(DataNode):$/;"	c
+PerceptronDataset	backend.py	/^class PerceptronDataset(Dataset):$/;"	c
+PerceptronModel	models.py	/^class PerceptronModel(object):$/;"	c
+ReLU	nn.py	/^class ReLU(FunctionNode):$/;"	c
+RegressionDataset	backend.py	/^class RegressionDataset(Dataset):$/;"	c
+RegressionModel	models.py	/^class RegressionModel(object):$/;"	c
+SoftmaxLoss	nn.py	/^class SoftmaxLoss(FunctionNode):$/;"	c
+SquareLoss	nn.py	/^class SquareLoss(FunctionNode):$/;"	c
+TESTS	autograder.py	/^TESTS = []$/;"	v
+Tracker	autograder.py	/^class Tracker(object):$/;"	c
+WritableNull	autograder.py	/^class WritableNull:$/;"	c
+__init__	autograder.py	/^    def __init__(self, questions, maxes, prereqs, mute_output):$/;"	m	class:Tracker
+__init__	backend.py	/^    def __init__(self, model):$/;"	m	class:DigitClassificationDataset
+__init__	backend.py	/^    def __init__(self, model):$/;"	m	class:LanguageIDDataset
+__init__	backend.py	/^    def __init__(self, model):$/;"	m	class:PerceptronDataset
+__init__	backend.py	/^    def __init__(self, model):$/;"	m	class:RegressionDataset
+__init__	backend.py	/^    def __init__(self, x, y):$/;"	m	class:Dataset
+__init__	models.py	/^    def __init__(self):$/;"	m	class:DigitClassificationModel
+__init__	models.py	/^    def __init__(self):$/;"	m	class:LanguageIDModel
+__init__	models.py	/^    def __init__(self):$/;"	m	class:RegressionModel
+__init__	models.py	/^    def __init__(self, dimensions):$/;"	m	class:PerceptronModel
+__init__	nn.py	/^    def __init__(self, *parents):$/;"	m	class:FunctionNode
+__init__	nn.py	/^    def __init__(self, *shape):$/;"	m	class:Parameter
+__init__	nn.py	/^    def __init__(self, data):$/;"	m	class:Constant
+__init__	nn.py	/^    def __init__(self, data):$/;"	m	class:DataNode
+__repr__	nn.py	/^    def __repr__(self):$/;"	m	class:Node
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:Add
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:AddBias
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:DataNode
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:DotProduct
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:Linear
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:ReLU
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:SoftmaxLoss
+_backward	nn.py	/^    def _backward(gradient, *inputs):$/;"	m	class:SquareLoss
+_encode	backend.py	/^    def _encode(self, inp_x, inp_y):$/;"	m	class:LanguageIDDataset
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:Add
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:AddBias
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:DotProduct
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:Linear
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:ReLU
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:SoftmaxLoss
+_forward	nn.py	/^    def _forward(*inputs):$/;"	m	class:SquareLoss
+_forward	nn.py	/^    def _forward(self, *inputs):$/;"	m	class:DataNode
+_predict	backend.py	/^    def _predict(self, split='dev'):$/;"	m	class:LanguageIDDataset
+_softmax	backend.py	/^    def _softmax(self, x):$/;"	m	class:LanguageIDDataset
+add_points	autograder.py	/^    def add_points(self, pts):$/;"	m	class:Tracker
+add_prereq	autograder.py	/^def add_prereq(q, pre):$/;"	f
+as_scalar	nn.py	/^def as_scalar(node):$/;"	f
+begin_q	autograder.py	/^    def begin_q(self, q):$/;"	m	class:Tracker
+begin_test	autograder.py	/^    def begin_test(self, test_name):$/;"	m	class:Tracker
+check_dependencies	autograder.py	/^def check_dependencies():$/;"	f
+check_digit_classification	autograder.py	/^def check_digit_classification(tracker):$/;"	f
+check_lang_id	autograder.py	/^def check_lang_id(tracker):$/;"	f
+check_perceptron	autograder.py	/^def check_perceptron(tracker):$/;"	f
+check_regression	autograder.py	/^def check_regression(tracker):$/;"	f
+deco	autograder.py	/^    def deco(fn):$/;"	f	function:test	file:
+disable_graphics	autograder.py	/^def disable_graphics():$/;"	f
+end_q	autograder.py	/^    def end_q(self):$/;"	m	class:Tracker
+end_test	autograder.py	/^    def end_test(self, pts):$/;"	m	class:Tracker
+finalize	autograder.py	/^    def finalize(self):$/;"	m	class:Tracker
+flush	autograder.py	/^    def flush(self):$/;"	m	class:WritableNull
+format_shape	nn.py	/^def format_shape(shape):$/;"	f
+get_data_path	backend.py	/^def get_data_path(filename):$/;"	f
+get_loss	models.py	/^    def get_loss(self, x, y):$/;"	m	class:DigitClassificationModel
+get_loss	models.py	/^    def get_loss(self, x, y):$/;"	m	class:RegressionModel
+get_loss	models.py	/^    def get_loss(self, xs, y):$/;"	m	class:LanguageIDModel
+get_prediction	models.py	/^    def get_prediction(self, x):$/;"	m	class:PerceptronModel
+get_validation_accuracy	backend.py	/^    def get_validation_accuracy(self):$/;"	m	class:Dataset
+get_validation_accuracy	backend.py	/^    def get_validation_accuracy(self):$/;"	m	class:DigitClassificationDataset
+get_validation_accuracy	backend.py	/^    def get_validation_accuracy(self):$/;"	m	class:LanguageIDDataset
+get_weights	models.py	/^    def get_weights(self):$/;"	m	class:PerceptronModel
+gradients	nn.py	/^def gradients(loss, parameters):$/;"	f
+iterate_forever	backend.py	/^    def iterate_forever(self, batch_size):$/;"	m	class:Dataset
+iterate_once	backend.py	/^    def iterate_once(self, batch_size):$/;"	m	class:Dataset
+iterate_once	backend.py	/^    def iterate_once(self, batch_size):$/;"	m	class:DigitClassificationDataset
+iterate_once	backend.py	/^    def iterate_once(self, batch_size):$/;"	m	class:LanguageIDDataset
+iterate_once	backend.py	/^    def iterate_once(self, batch_size):$/;"	m	class:PerceptronDataset
+iterate_once	backend.py	/^    def iterate_once(self, batch_size):$/;"	m	class:RegressionDataset
+log_softmax	nn.py	/^    def log_softmax(logits):$/;"	m	class:SoftmaxLoss
+main	autograder.py	/^def main():$/;"	f
+main	backend.py	/^def main():$/;"	f
+maybe_sleep_and_close	backend.py	/^def maybe_sleep_and_close(seconds):$/;"	f
+mute	autograder.py	/^    def mute(self):$/;"	m	class:Tracker
+no_graphics	autograder.py	/^def no_graphics():$/;"	f
+np	autograder.py	/^import numpy as np$/;"	I
+np	backend.py	/^import numpy as np$/;"	I
+np	nn.py	/^import numpy as np$/;"	I
+parse_options	autograder.py	/^def parse_options(argv):$/;"	f
+plt	autograder.py	/^    import matplotlib.pyplot as plt$/;"	I	function:check_dependencies	file:
+plt	backend.py	/^import matplotlib.pyplot as plt$/;"	I
+run	models.py	/^    def run(self, x):$/;"	m	class:DigitClassificationModel
+run	models.py	/^    def run(self, x):$/;"	m	class:PerceptronModel
+run	models.py	/^    def run(self, x):$/;"	m	class:RegressionModel
+run	models.py	/^    def run(self, xs):$/;"	m	class:LanguageIDModel
+test	autograder.py	/^def test(q, points):$/;"	f
+trace_node	autograder.py	/^def trace_node(node_to_trace):$/;"	f
+train	models.py	/^    def train(self, dataset):$/;"	m	class:DigitClassificationModel
+train	models.py	/^    def train(self, dataset):$/;"	m	class:LanguageIDModel
+train	models.py	/^    def train(self, dataset):$/;"	m	class:PerceptronModel
+train	models.py	/^    def train(self, dataset):$/;"	m	class:RegressionModel
+unmute	autograder.py	/^    def unmute(self):$/;"	m	class:Tracker
+update	nn.py	/^    def update(self, direction, multiplier):$/;"	m	class:Parameter
+use_graphics	backend.py	/^use_graphics = True$/;"	v
+verify_node	autograder.py	/^def verify_node(node, expected_type, expected_shape, method_name):$/;"	f
+visit	autograder.py	/^    def visit(node):$/;"	f	function:trace_node	file:
+visit	nn.py	/^    def visit(node):$/;"	f	function:gradients	file:
+write	autograder.py	/^    def write(self, string):$/;"	m	class:WritableNull
