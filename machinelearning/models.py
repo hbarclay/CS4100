@@ -1,5 +1,5 @@
 import nn
-import numpy as np
+import math
 
 class PerceptronModel(object):
     def __init__(self, dimensions):
@@ -140,11 +140,14 @@ class DigitClassificationModel(object):
         # Initialize your model parameters here
         self.batch_size = 1
         self.inputdim = 784
-        self.hidden_layer_size = 125
-        self.learning_rate = -0.008
+        self.hidden_layer_size = 200
+        self.learning_rate = -0.015
+        self.decay = 0.025
 
         self.weights1 = nn.Parameter(self.inputdim, self.hidden_layer_size)
         self.bias1 = nn.Parameter(1, self.hidden_layer_size)
+        self.weights2 = nn.Parameter(self.hidden_layer_size, self.hidden_layer_size)
+        self.bias2 = nn.Parameter(1, self.hidden_layer_size)
         self.weightsout = nn.Parameter(self.hidden_layer_size, 10)
         self.biasout = nn.Parameter(1, 10)
 
@@ -166,8 +169,9 @@ class DigitClassificationModel(object):
         """
         w1 = nn.Linear(x, self.weights1)
         out1 = nn.ReLU(nn.AddBias(w1, self.bias1))
-        wout = nn.Linear(out1, self.weightsout)
-        return nn.AddBias(wout, self.biasout)
+        out2 = nn.ReLU(nn.AddBias(nn.Linear(out1, self.weights2), self.bias2))
+        wout = nn.Linear(out2, self.weightsout)
+        return wout
 
 
 
@@ -190,18 +194,24 @@ class DigitClassificationModel(object):
         """
         Trains the model.
         """
+        epoch = 0
+        lr = self.learning_rate
         while True:
-
+            epoch += 1
+            print(lr)
             for x,y in dataset.iterate_once(self.batch_size):
-                Del = nn.gradients(self.get_loss(x,y), [self.weights1, self.bias1, self.weightsout, self.biasout])
+                Del = nn.gradients(self.get_loss(x,y), [self.weights1, self.bias1, self.weightsout, self.biasout, self.weights2, self.bias2])
 
-                self.weights1.update(Del[0], self.learning_rate)
-                self.bias1.update(Del[1], self.learning_rate)
-                self.weightsout.update(Del[2], self.learning_rate)
-                self.biasout.update(Del[3], self.learning_rate)
+                self.weights1.update(Del[0], lr)
+                self.bias1.update(Del[1], lr)
+                self.weights2.update(Del[4], lr)
+                self.bias2.update(Del[5], lr)
+                self.weightsout.update(Del[2], lr)
+                self.biasout.update(Del[3], lr)
 
+            lr = lr * math.exp(-1.0*self.decay*epoch)
 
-            if dataset.get_validation_accuracy() > 0.98:
+            if dataset.get_validation_accuracy() > 0.97:
                 break
 		
 
@@ -223,7 +233,15 @@ class LanguageIDModel(object):
         self.languages = ["English", "Spanish", "Finnish", "Dutch", "Polish"]
 
         # Initialize your model parameters here
-        "*** YOUR CODE HERE ***"
+        self.batch_size = 100
+        self.learning_rate = -0.015
+        self.decay = 0.0002
+        self.hidden_layer_size = 256
+        self.outsize = 5
+        
+        self.w1 = nn.Parameter(self.num_chars, self.hidden_layer_size)
+        self.wh = nn.Parameter(self.hidden_layer_size, self.hidden_layer_size)
+        self.wout = nn.Parameter(self.hidden_layer_size, self.outsize)
 
     def run(self, xs):
         """
@@ -254,7 +272,13 @@ class LanguageIDModel(object):
             A node with shape (batch_size x 5) containing predicted scores
                 (also called logits)
         """
-        "*** YOUR CODE HERE ***"
+        z0 = nn.ReLU(nn.Linear(xs[0], self.w1))
+
+        z = z0
+        for x in xs[1:]:
+           z = nn.ReLU(nn.Add(nn.Linear(x, self.w1), nn.Linear(z, self.wh)))
+
+        return nn.Linear(z, self.wout)
 
     def get_loss(self, xs, y):
         """
@@ -270,10 +294,28 @@ class LanguageIDModel(object):
             y: a node with shape (batch_size x 5)
         Returns: a loss node
         """
-        "*** YOUR CODE HERE ***"
+        return nn.SoftmaxLoss(self.run(xs), y)
 
     def train(self, dataset):
         """
         Trains the model.
         """
-        "*** YOUR CODE HERE ***"
+        lr = self.learning_rate
+        epoch = 0
+        while True:
+            epoch += 1
+            for x, y in dataset.iterate_once(self.batch_size):
+                Del = nn.gradients(self.get_loss(x,y), [self.w1, self.wh, self.wout])
+
+                self.w1.update(Del[0], lr)
+                self.wh.update(Del[1], lr)
+                self.wout.update(Del[2], lr)
+
+            #print(dataset.get_validation_accuracy())
+
+            lr = lr * math.exp(-1.0*self.decay*epoch)
+            #print(lr)
+            #print(math.exp(-self.decay*epoch))
+
+            if dataset.get_validation_accuracy() >= 0.89:
+                break
